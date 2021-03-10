@@ -34,7 +34,7 @@ def browse(v):
             root.FILENAME=filedialog.asksaveasfilename(filetypes=[('WAV Files', '*.wav')])
         elif v==2:
             root.filename=filedialog.askopenfilename(filetypes=[('WAV Files', '*.wav')])
-class Amplitude(object):
+class Amplitude(object): #VU Meters
     ''' an abstraction for Amplitudes (with an underlying float value)
     that packages a display function and many more '''
 
@@ -82,7 +82,7 @@ class Amplitude(object):
         graphically '''
         int_val = self.to_int(scale)
         return int(int_val)
-def record():
+def record(): #crashing when this is executed
     if not root.FILENAME=='':
         FILENAME=root.FILENAME+'.wav'
     else:
@@ -121,7 +121,7 @@ def record():
     wf.writeframes(b''.join(frames))
     root.meter1.set(0)
     wf.close()
-def play():
+def play(): #plays audio
     if not root.filename=='':
         FILENAME=root.filename
     else:
